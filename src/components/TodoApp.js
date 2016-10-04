@@ -13,9 +13,19 @@ class TodoApp extends Component {
   }
 
   updateItems(newItem) {
-    let allItems = this.state.items;
-    allItems.unshift({ about: newItem });
-    this.setState({items: allItems});
+    request
+    .post('https://n0t3z.herokuapp.com/api/notes/new')
+    .send({ about: newItem })
+    .end((err, res) => {
+      if (err) {
+        console.log("Error: " + err);
+        return;
+      }
+
+      let allItems = this.state.items;
+      allItems.unshift({ about: newItem });
+      this.setState({items: allItems});
+    });
   }
 
   componentWillMount() {  
