@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import '../css/TodoListItem.css';
 
 class TodoListItem extends Component {
   render() {
-    return (<li>{this.props.children}</li>);
+    return <li className="item">{this.props.children}</li>;
   }
 }
 

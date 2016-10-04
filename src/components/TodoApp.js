@@ -42,10 +42,12 @@ class TodoApp extends Component {
 
   render() {
     return (
-      <div className="todo-app">
-        <TodoBanner/>
-        <TodoForm onFormSubmit={this.updateItems}/>
-        <TodoList items={this.state.items}/>
+      <div className="row">
+        <div className="col-sm-6 col-sm-offset-3 todo-app">
+          <TodoBanner/>
+          <TodoForm onFormSubmit={this.updateItems}/>
+          <TodoList items={this.state.items}/>
+        </div>
       </div>
     );
   }

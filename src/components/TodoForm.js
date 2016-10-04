@@ -25,15 +25,13 @@ class TodoForm extends Component {
 
   render() {
     return (
-      <form className="form-inline" onSubmit={this.onSubmit}>
-        <div className="form-group">
+      <form onSubmit={this.onSubmit}>
           <div className="input-group">
-            <input type="text" className="form-control" onChange={this.onChange} value={this.state.item}/>
+            <input type="text" className="form-control" required="true" onChange={this.onChange} value={this.state.item}/>
             <span className="input-group-btn">
               <button className="btn btn-success" type="submit">Add</button>
             </span>
           </div>
-        </div>
       </form>
     );
   }
