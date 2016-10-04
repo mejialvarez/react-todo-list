@@ -8,8 +8,8 @@ class TodoList extends Component {
         return (
           <ul className="todo-list-item">
             {
-              this.props.items.map((itemText) => {
-                return <TodoListItem>{itemText.about}</TodoListItem>
+              this.props.items.map((itemText, index) => {
+                return <TodoListItem key={index}>{itemText.about}</TodoListItem>
               })
             }
           </ul>

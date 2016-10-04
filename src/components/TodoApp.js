@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import request from 'superagent';
 import TodoBanner from '../components/TodoBanner';
-import TodoList from '../components/TodoList';
 import TodoForm from '../components/TodoForm';
+import TodoList from '../components/TodoList';
 import '../css/TodoApp.css';
 
 class TodoApp extends Component {
@@ -17,14 +18,16 @@ class TodoApp extends Component {
     this.setState({items: allItems});
   }
 
-  componentDidMount() {  
-    fetch('https://n0t3z.herokuapp.com/api/notes')
-      .then((response) => {
-        return response.json()
-      })
-      .then((items) => {
-        this.setState({ items: items })
-      })
+  componentWillMount() {  
+    request
+    .get('https://n0t3z.herokuapp.com/api/notes')
+    .end((err, res) => {
+     if (err) {
+      console.log("Error: " + err);
+      return;
+      }
+      this.setState({ items: res.body.slice(0).reverse() });
+    });
   }
 
   render() {
